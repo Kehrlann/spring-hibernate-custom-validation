@@ -37,3 +37,15 @@ databaseChangeLog:
                   creation_date TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT (now() at time zone 'utc')
                 );
                 CREATE INDEX event_timestamp ON event(creation_date);
+
+  - changeSet:
+      id: seed-data
+      author: daniel
+      runAlways: true
+      changes:
+        - sql:
+          sql: DELETE FROM application_user;
+        - sqlFile:
+            path: seeds.sql
+            relativeToChangelogFile: true
+            splitStatements: false

@@ -10,7 +10,7 @@ is postgres-specific and hence not supported by Hibernate.
 ## TODO
 [x] Docker file to launch a DB on start
 [x] Define a schema, do a liquibase migration
-[ ] Add seeds to the DB
+[x] Add seeds to the DB
 [ ] Showcase a "COUNT" query with @Formula
 [ ] Showcase a DISTINCT ON jdbc template query + @Transient field
 [ ] Showcase a DISTINCT ON native query, with a custom validator
