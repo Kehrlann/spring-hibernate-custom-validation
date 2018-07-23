@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/hibernate_db
+    username: postgres
+  jpa:
+    hibernate.ddl-auto: validate
+    # properties.hibernate.hbm2ddl.schema_filter_provider: wf.garnier. ...
