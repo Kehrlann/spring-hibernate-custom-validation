@@ -18,6 +18,8 @@ class Event(
         val device: Device = Device(),
         val value: Int = Int.MIN_VALUE,
         val creationDate: LocalDateTime = LocalDateTime.now(ZoneOffset.UTC)
-)
+) {
+    override fun toString() = "Event(id=$id, value=$value, creationDate=$creationDate)"
+}
 
 interface EventRepository: CrudRepository<Event, Int>
