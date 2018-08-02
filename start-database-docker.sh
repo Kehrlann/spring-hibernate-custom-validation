@@ -12,3 +12,18 @@ docker run \
     -p 5432:5432 \
     -d \
     postgres
+
+iterations=0
+while (! psql -U postgres -h localhost --command "select 1;" hibernate_db > /dev/null 2>&1) && [ $iterations -lt 5 ]; do
+  echo "Waiting for database to start ..."
+  sleep 1;
+  ((iterations++));
+done
+
+echo "Trying to seed database ..."
+echo "(this might take a few minutes)"
+if psql -U postgres -h localhost -f seeds.sql hibernate_db; then
+  echo "Done !"
+else
+  echo "Database already seeded"
+fi
