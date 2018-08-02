@@ -1,18 +1,16 @@
 package wf.garnier.spring.hibernatefun
 
+import org.slf4j.LoggerFactory
+import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
-import kotlin.system.measureTimeMillis
 
 @SpringBootApplication
-class HibernateFunApplication(eventRepo: EventRepository) {
-
-    init {
-        val initTime = measureTimeMillis {
-            val tenEvents = eventRepo.findAll().take(10)
-            tenEvents.forEach(System.out::println)
-        }
-        println("Load finished, in ${initTime}ms !")
+class HibernateFunApplication: CommandLineRunner {
+    override fun run(vararg args: String?) {
+        val logger = LoggerFactory.getLogger(HibernateFunApplication::class.java)
+        logger.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        logger.info("App started ! Visit /benchmark to start using it.")
     }
 }
 
