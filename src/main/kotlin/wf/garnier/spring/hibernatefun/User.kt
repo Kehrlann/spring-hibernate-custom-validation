@@ -7,12 +7,17 @@ import javax.persistence.*
 
 @Entity
 @Table(name = "application_user")
-data class User(
+class User(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         val id: Int = 0,
         val email: String = "",
-        val creationDate: LocalDateTime = LocalDateTime.now(ZoneOffset.UTC)
-)
+        val creationDate: LocalDateTime = LocalDateTime.now(ZoneOffset.UTC),
 
-interface UserRepository: CrudRepository<User, Int>
+        @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+        val devices: List<Device> = listOf()
+) {
+    override fun toString() = "User(id=$id,email=$email)"
+}
+
+interface UserRepository : CrudRepository<User, Int>
