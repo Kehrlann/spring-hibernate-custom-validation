@@ -27,3 +27,8 @@ if psql -U postgres -h localhost -f seeds.sql hibernate_db; then
 else
   echo "Database already seeded"
 fi
+
+echo "You database is up and seeded. Connect using:"
+echo ""
+echo "    psql -U postgres -h localhost hibernate_db"
+echo ""
