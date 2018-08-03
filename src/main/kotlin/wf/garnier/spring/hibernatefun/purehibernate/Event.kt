@@ -1,7 +1,5 @@
-package wf.garnier.spring.hibernatefun
+package wf.garnier.spring.hibernatefun.purehibernate
 
-import org.springframework.data.jpa.repository.Query
-import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import java.time.LocalDateTime
@@ -20,17 +18,6 @@ class Event(
         val creationDate: LocalDateTime = LocalDateTime.now(ZoneOffset.UTC)
 ) {
     override fun toString() = "Event(id=$id, value=$value, creationDate=$creationDate)"
-}
-
-interface EventRepository: CrudRepository<Event, Int> {
-    @Query("""
-        SELECT DISTINCT ON(event.device_id) event.*
-            FROM event
-            JOIN device ON event.device_id = device.id
-            WHERE device.user_id = ?
-        ORDER BY event.device_id, event.creation_date DESC;
-    """, nativeQuery = true)
-    fun latestEventsByUserId(userId: Int): Collection<Event>
 }
 
 @Service

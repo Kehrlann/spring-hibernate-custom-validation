@@ -1,4 +1,4 @@
-package wf.garnier.spring.hibernatefun
+package wf.garnier.spring.hibernatefun.purehibernate
 
 import org.springframework.data.repository.CrudRepository
 import java.time.LocalDateTime

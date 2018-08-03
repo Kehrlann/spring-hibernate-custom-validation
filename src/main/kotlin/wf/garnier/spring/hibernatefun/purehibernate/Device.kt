@@ -1,4 +1,4 @@
-package wf.garnier.spring.hibernatefun
+package wf.garnier.spring.hibernatefun.purehibernate
 
 import org.hibernate.annotations.JoinFormula
 import org.springframework.data.repository.CrudRepository
