@@ -4,8 +4,9 @@ spring:
     username: postgres
   jpa:
     hibernate.ddl-auto: validate
+
     # Custom validator can be loaded here
-    # properties.hibernate.hbm2ddl.schema_filter_provider: wf.garnier. ...
+    properties.hibernate.hbm2ddl.schema_filter_provider: wf.garnier.spring.hibernatefun.schemavalidation.CustomSchemaFilterProvider
 
 # SQL logging
 # logging.level.org.hibernate.SQL: DEBUG
