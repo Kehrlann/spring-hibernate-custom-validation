@@ -22,6 +22,9 @@ CREATE TABLE event (
   value INT NOT NULL,
   creation_date TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT (now() at time zone 'utc')
 );
+-- Simple index for join query
+CREATE INDEX event_timestamp ON event(creation_date DESC);
+-- Aggregate index for DISTINCT ON
 CREATE INDEX event_timestamp_device_id ON event(device_id, creation_date DESC);
 
 -- Declare random function
